@@ -1,23 +1,33 @@
 import { useState } from 'react';
 import './App.css';
+import { SnackbarProvider, useSnackbar } from 'notistack';
+
+function MyApp() {
+  return (
+    <SnackbarProvider maxSnack={3}>
+      <App />
+    </SnackbarProvider>
+  );
+}
 
 
-export default function App() {
+ function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-
+  const { enqueueSnackbar } = useSnackbar();
 const haandleSubmit =(e) => {
   e.preventDefault();
   if(username === "user" && password === "password") {
     setError("");
     setIsSubmitted(true);
-
+    enqueueSnackbar("Login successful!", { variant: 'success' });
   }else {
     
     setError("Invalid username or password");
     setIsSubmitted(false);
+    enqueueSnackbar("Invalid username or password", { variant: 'error' });
   }
 };
 
@@ -54,9 +64,11 @@ const haandleSubmit =(e) => {
               <div>
                 <button type = "submit">Submit</button>
               </div>
-            </form> 
+            </form>
         )
       }
     </div>
   )
 }
+
+ export default MyApp;
