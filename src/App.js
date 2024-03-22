@@ -26,13 +26,13 @@ const haandleSubmit =(e) => {
       <h1>Login Page</h1>
       {isSubmitted? (
           <div>
-            <p>Welcome, {username}</p>
+            <p>Welcome, {username}!</p>
           </div>
          ) : (
             <form onSubmit= {haandleSubmit}>
               {error && <p> {error}</p>}
               <div>
-                <label htmlFor="username">username:</label>
+                <label htmlFor="username">Username:</label>
                 <input 
                 id = "username"
                 type= "text"
@@ -42,7 +42,7 @@ const haandleSubmit =(e) => {
                 />
               </div>
               <div>
-                <label htmlFor="password">password:</label>
+                <label htmlFor="password">Password:</label>
                 <input 
                 id = "password"
                 type= "text"
@@ -54,8 +54,7 @@ const haandleSubmit =(e) => {
               <div>
                 <button type = "submit">Submit</button>
               </div>
-            </form>
-          
+            </form> 
         )
       }
     </div>
